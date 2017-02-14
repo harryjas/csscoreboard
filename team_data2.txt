@@ -1,6 +1,0 @@
-Team G,0,0,g
-Team H,0,0,h
-Team I,0,0,i
-Team J,0,0,j
-Team K,0,0,k
-Team L,0,0,l
