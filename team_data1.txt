@@ -1,0 +1,6 @@
+Team A,0,0,a
+Team B,0,0,b
+Team C,0,0,c
+Team D,0,0,d
+Team E,0,0,e
+Team F,0,0,f
