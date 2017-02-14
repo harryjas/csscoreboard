@@ -4,41 +4,41 @@ p1
 (lp2
 S'Team A'
 p3
-aI0
-aI0
+aI17
+aI13
 asS'c'
 p4
 (lp5
 S'Team C'
 p6
-aI0
-aI0
+aI11
+aI1
 asS'b'
 p7
 (lp8
 S'Team B'
 p9
-aI0
-aI0
+aI4
+aI6
 asS'e'
 p10
 (lp11
 S'Team E'
 p12
 aI0
-aI0
+aI3
 asS'd'
 p13
 (lp14
 S'Team D'
 p15
-aI0
-aI0
+aI1
+aI1
 asS'f'
 p16
 (lp17
 S'Team F'
 p18
-aI0
+aI2
 aI0
 as.

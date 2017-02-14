@@ -1,4 +1,4 @@
-import pygame, sys, pickle
+import pygame, sys, pickle, random
 from pygame.locals import *
 
 pygame.init()
@@ -25,6 +25,7 @@ def dumpData(slot,data):
 def main():
 	slot = 1 					# slot number
 	fullscreen = True
+	logs = []
 	while True:
 		screen.fill((255,255,255))	# background color
 		data = readData(slot)
@@ -40,8 +41,14 @@ def main():
 			if event.type is KEYDOWN and event.key in [ord(x) for x in data.keys()]:
 				if pygame.key.get_mods() & pygame.KMOD_ALT:
 					data[chr(event.key)][2] += 1 			# Add 1 loss
+					logs.append(("Team : %s lost a match. %s" %(data[chr(event.key)][0], random.choice(["Too bad.", "Better luck next time...", "They need to try harder.", "Come on!"])),(255,0,0)))
+					if len(logs)==6:
+						logs.pop(0)
 				if pygame.key.get_mods() & pygame.KMOD_CTRL:
 					data[chr(event.key)][1] += 1 			# Add 1 win
+					logs.append(("Team : %s won a match! %s" %(data[chr(event.key)][0], random.choice(["Thats good.", "Job well done!", "They rock!", "Smooth."])),(0,255,0)))
+					if len(logs)==6:
+						logs.pop(0)
 			if event.type is KEYDOWN and event.key == K_z:
 				if fullscreen:
 					pygame.display.set_mode(size)
@@ -70,8 +77,11 @@ def main():
 			displayText("%d" %(byWins[i][2]), 45, (255,0,0), (860,startY))
 			matches = byWins[i][2]+byWins[i][1]
 			displayText("%d%%" %((float(byWins[i][1])/(byWins[i][2]+byWins[i][1]))*100 if matches>0 else 0), 45, (0,0,255), (1010,startY))
-			
 			startY += 80
+
+		for log in logs[::-1]:
+			displayText("%s" %(log[0]), 25, log[1], (160,startY))
+			startY+=30
 		dumpData(slot, data)
 		pygame.display.update()
 
