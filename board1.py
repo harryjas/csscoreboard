@@ -4,7 +4,7 @@ from pygame.locals import *
 pygame.init()
 size = (1280, 800)			# (1280, 600)screen resolution
 screen = pygame.display.set_mode(size, FULLSCREEN)
-
+logo=pygame.transform.scale(pygame.image.load("logo.png"), (150,150))
 def readData(slot):				# slot is the time slot ;)
 	dataFile = open(["team_data1.dat", "team_data2.dat",][slot-1], "r")
 	data = pickle.load(dataFile)
@@ -35,6 +35,7 @@ def main():
 				sys.exit()
 			if event.type is KEYDOWN and event.key == K_x:
 				if (pygame.key.get_mods() & pygame.KMOD_ALT) and (pygame.key.get_mods() & pygame.KMOD_CTRL) and (pygame.key.get_mods() & pygame.KMOD_SHIFT):
+					logs = []
 					for team in data:
 						data[team][1]=data[team][2]=0
 						dumpData(slot, data)
@@ -59,6 +60,7 @@ def main():
 			if event.type is KEYDOWN and event.key == K_TAB:
 				slot = 1 if slot == 2 else 2
 				data = readData(slot)
+				logs = []
 		displayText("Slot %s" %slot, 20, (0,0,0), (1240,0))
 		byWins = sorted(sorted(data.values()), key=lambda x:x[1], reverse=True)		# Ranking teams
 		#displayText("P.U.L.o.G.", 40, (255,100,0),(560,10))
@@ -81,7 +83,12 @@ def main():
 
 		for log in logs[::-1]:
 			displayText("%s" %(log[0]), 25, log[1], (160,startY))
-			startY+=30
+			startY+=26
+		if logs:
+			displayText("Recent", 40, (0,0,0), (20,680))
+			displayText("Events", 40, (0,0,0), (20,710))
+		displayText("Powered By ", 30, (0,0,0), (750,700))
+		screen.blit(logo, (900,630))
 		dumpData(slot, data)
 		pygame.display.update()
 
