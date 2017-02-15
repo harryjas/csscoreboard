@@ -2,43 +2,43 @@
 S'a'
 p1
 (lp2
-S'Team A'
+S'team a'
 p3
 aI1
 aI0
 asS'c'
 p4
 (lp5
-S'Team C'
+S'team c'
 p6
-aI2
+aI0
 aI0
 asS'b'
 p7
 (lp8
-S'Team B'
+S'team b'
 p9
 aI0
-aI1
+aI0
 asS'e'
 p10
 (lp11
-S'Team E'
+S'team e'
 p12
 aI0
-aI1
+aI0
 asS'd'
 p13
 (lp14
-S'Team D'
+S'team d'
 p15
 aI0
-aI1
+aI0
 asS'f'
 p16
 (lp17
-S'Team F'
+S'team f'
 p18
 aI0
-aI1
+aI0
 as.

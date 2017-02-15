@@ -42,12 +42,12 @@ def main():
 			if event.type is KEYDOWN and event.key in [ord(x) for x in data.keys()]:
 				if pygame.key.get_mods() & pygame.KMOD_ALT:
 					data[chr(event.key)][2] += 1 			# Add 1 loss
-					logs.append(("Team : %s lost a match. %s" %(data[chr(event.key)][0], random.choice(["Too bad.", "Better luck next time...", "They need to try harder.", "Come on!"])),(255,0,0)))
+					logs.append(("%s lost a match. %s" %(data[chr(event.key)][0], random.choice(["Too bad.", "Better luck next time...", "They need to try harder.", "Come on!", "This is not gonna work.", ])),(255,0,0)))
 					if len(logs)==6:
 						logs.pop(0)
 				if pygame.key.get_mods() & pygame.KMOD_CTRL:
 					data[chr(event.key)][1] += 1 			# Add 1 win
-					logs.append(("Team : %s won a match! %s" %(data[chr(event.key)][0], random.choice(["Thats good.", "Job well done!", "They rock!", "Smooth."])),(0,255,0)))
+					logs.append(("%s won a match! %s" %(data[chr(event.key)][0], random.choice(["Thats good.", "Job well done!", "They rock!", "Smooth.", "Thats the spirit!", "They are killing it!", "Enemies beware!",])),(0,255,0)))
 					if len(logs)==6:
 						logs.pop(0)
 			if event.type is KEYDOWN and event.key == K_z:
@@ -75,10 +75,10 @@ def main():
 		for i in range(len(byWins)):
 			displayText("%d" %(i+1), 45, (0,100,0), (160,startY))
 			displayText("%s" %(byWins[i][0]), 40, (0,100,100), (300,startY))
-			displayText("%d" %(byWins[i][1]), 45, (0,255,0), (700,startY))
-			displayText("%d" %(byWins[i][2]), 45, (255,0,0), (860,startY))
+			displayText("%d" %(byWins[i][1]), 45, (0,255,0), (710,startY))
+			displayText("%d" %(byWins[i][2]), 45, (255,0,0), (870,startY))
 			matches = byWins[i][2]+byWins[i][1]
-			displayText("%d%%" %((float(byWins[i][1])/(byWins[i][2]+byWins[i][1]))*100 if matches>0 else 0), 45, (0,0,255), (1010,startY))
+			displayText("%d%%" %((float(byWins[i][1])/(byWins[i][2]+byWins[i][1]))*100 if matches>0 else 0), 45, (0,0,255), (1020,startY))
 			startY += 80
 
 		for log in logs[::-1]:
@@ -88,6 +88,8 @@ def main():
 			displayText("Recent", 40, (0,0,0), (20,680))
 			displayText("Events", 40, (0,0,0), (20,710))
 		displayText("Powered By ", 30, (0,0,0), (750,700))
+		displayText("Kill 'em ", 50, (0,0,0), (1110,640))
+		displayText("All!", 60, (0,0,0), (1130,680))
 		screen.blit(logo, (900,630))
 		dumpData(slot, data)
 		pygame.display.update()
